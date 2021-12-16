@@ -1,0 +1,38 @@
+﻿<Window x:Class="EpamDashkevichLab3.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EpamDashkevichLab3"
+        xmlns:vm="clr-namespace:EpamDashkevichLab3.ViewModels"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="550">
+    <Window.DataContext>
+        <vm:MainWindowViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <StackPanel>
+            <Button Command="{Binding GoFunctionByChart}" Height="40">
+                <Button.Content>
+                    <TextBlock Text="Значение по функции с графика"
+                               TextWrapping="Wrap"
+                               TextAlignment="Center"/>
+                </Button.Content>
+            </Button>
+            <Button Command="{Binding GoTaylor}" Height="40">
+                <Button.Content>
+                    <TextBlock Text="Ряд тейлора"
+                               TextWrapping="Wrap"
+                               TextAlignment="Center"/>
+                </Button.Content>
+            </Button>
+        </StackPanel>
+        <Frame Grid.Column="1" VerticalAlignment="Top"
+               Content="{Binding CurrentPage, UpdateSourceTrigger=PropertyChanged}"
+               NavigationUIVisibility="Hidden"/>
+    </Grid>
+</Window>
